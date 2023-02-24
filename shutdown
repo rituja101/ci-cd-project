@@ -1,0 +1,50 @@
+pipeline {
+
+	agent {
+					label {
+						
+							label "dev"
+							customWorkspace "/mnt/project"
+						
+					}
+	}
+	
+	environment {
+						
+						composedirname = "docker-tomcat"
+		}
+	
+	stages {
+		
+				
+			stage ("SHUTDOWN-DEV-env"){
+			
+		
+			
+				steps {
+				
+							sh "cd ${composedirname} && sudo docker-compose down -v"
+							sh "sudo docker system prune -a -f"
+				}
+			
+			}
+	
+			stage ("SHUTDOWN-QA-env"){
+			
+				agent {
+							label {
+										label "qa"
+										customWorkspace "/mnt/project"
+							}
+				}
+			
+			
+				steps {
+				
+							sh "cd ${composedirname} && sudo docker-compose down -v"
+							sh "sudo docker system prune -a -f"
+				}
+			
+			}
+	}
+}
