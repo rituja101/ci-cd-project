@@ -24,7 +24,6 @@ pipeline {
 						
 							steps {
 											build 'copy-war'
-'
 							}
 						}
 						
