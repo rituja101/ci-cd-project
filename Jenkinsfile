@@ -26,14 +26,14 @@ pipeline {
 											build 'copy-war'
 							}
 						}
-						
+						/*
 						stage ('dev-deploy'){
 						
 							steps {
 											build 'deploy-dev'
 							}
 						}
-						
+						*/
 						stage ('qa-deploy'){
 						
 							steps {
